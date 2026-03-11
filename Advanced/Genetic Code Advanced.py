@@ -62,7 +62,7 @@ def polypeptide(mrna_seq):
         "Phe": ("UUU", "UUC"),
         "Leu": ("UUA", "UUG", "CUU", "CUC", "CUA", "CUG"),
         "Ile": ("AUU", "AUC", "AUA"),
-        "Met": ("AUG"),
+        "Met": ("AUG",),
         "Val": ("GUU", "GUC", "GUA", "GUG"),
         "Ser": ("UCU", "UCC", "UCA", "UCG", "AGU", "AGC"),
         "Pro": ("CCU", "CCC", "CCA", "CCG"),
@@ -76,17 +76,19 @@ def polypeptide(mrna_seq):
         "Lys": ("AAA", "AAG"),
         "Asp": ("GAU", "GAC"),
         "Glu": ("GAA", "GAG"),
-        "Trp": ("UGG"),
+        "Trp": ("UGG",),
         "Cys": ("UGU", "UGC"),
         "Arg": ("CGU", "CGC", "CGA", "CGG", "AGA", "AGG"),
         "Gly": ("GGU", "GGC", "GGA", "GGG")
     }
     
     polypeptide_seq = [] #Amino acids are being stored on a list in order to format the output easily
+
     longer_seq = ""
-    newer_seq = ""
+    
     #Search for the longer codifing sequence
     for base_start in range(len(mrna_seq)):
+        newer_seq = ""
         if mrna_seq[base_start : base_start + 3] == "AUG":
             for base_stop in range(base_start + 3, len(mrna_seq), 3):
                 if mrna_seq[base_stop : base_stop + 3] in amino_acids["Stop"]:
@@ -96,6 +98,9 @@ def polypeptide(mrna_seq):
                 newer_seq = mrna_seq[base_start:]
             if len(newer_seq) > len(longer_seq):
                 longer_seq = newer_seq
+    if longer_seq == "": #If no ORF found, take mRNA_seq as the correct ORF
+        longer_seq = mrna_seq
+    
     for i in range(0, len(longer_seq), 3):
         codon = longer_seq[i : i + 3]
         exists = None #It is used to detect unknown codons (e.g. CUN)
