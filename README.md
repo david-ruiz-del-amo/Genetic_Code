@@ -1,5 +1,5 @@
 # Genetic_Code
-This is a project I did for fun as a helpful tool for some college tasks. There are 2 versions of each code (a <b>Jupyter Notebook</b> format and a <b>python script</b> format) so as to use whichever you prefer.<br>
+This is a project I did for fun as a helpful tool for some college tasks. There are 2 versions of each code (a <b>Jupyter Notebook</b> format and a <b>python script</b> format) so as to use whichever you prefer. Besides, the python script only admits FASTA files through the terminal.<br>
 The aim of this project is to translate a sequence of DNA or RNA and obtain the corresponding amino acids.<br>
 There are 2 different codes: <i>Genetic Code Basic</i> and <i>Genetic Code Advanced</i>.<br>
 1. <i>Genetic Code Basic</i>: This is the most basic script for doing all the typical assignments on molecular biology subjects. i.e. you have some codons and you have to identify which amino acids they encode. Additionally, this script shows you the dsDNA of the sequence given, the mRNA, the polypeptide and the lengths of the sequence and polypeptide.
